@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Struktur Gaji Baru & Diskresi</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { background-color: #f0f2f5; background-image: radial-gradient(at 0% 0%, rgba(255,255,255,1) 0, transparent 50%), radial-gradient(at 100% 100%, rgba(230,230,230,1) 0, transparent 50%); min-height: 100vh; color: #1e293b; padding: 40px; }
+    
+    .page-content { max-width: 1200px; margin: 0 auto; }
+    
+    /* HEADER TEXT */
+    .top-nav { font-size: 14px; font-weight: 700; color: #0ea5e9; margin-bottom: 15px; letter-spacing: 1px;}
+    .page-title { font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
+    .page-subtitle { font-size: 15px; color: #64748b; margin-bottom: 20px; }
+    .title-line { width: 80px; height: 5px; background-color: #f59e0b; margin-bottom: 35px; border-radius: 3px;}
+
+    /* SECTION TITLE */
+    .section-header { font-size: 22px; font-weight: 800; color: #1e3a8a; text-align: center; margin: 40px 0 25px; padding-bottom: 10px; border-bottom: 2px dashed #cbd5e1; }
+    
+    /* SPLIT SCREEN BEFORE & AFTER */
+    .split-container { display: flex; gap: 20px; margin-bottom: 30px; }
+    .split-box { flex: 1; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); position: relative; }
+    .split-box.before { background: #ffffff; border: 1px solid #e2e8f0; }
+    .split-box.after { background: #f0f9ff; border: 1px solid #bae6fd; }
+    
+    .split-box h3 { font-size: 18px; font-weight: 800; text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px;}
+    .split-box.before h3 { color: #1e293b; }
+    .split-box.after h3 { color: #0284c7; }
+    
+    .split-box ul { list-style: none; padding-left: 0; font-size: 14px; line-height: 1.7; }
+    .split-box ul li { padding-left: 20px; position: relative; margin-bottom: 12px; color: #334155; text-align: justify;}
+    .split-box ul li::before { content: '•'; position: absolute; left: 0; font-size: 20px; line-height: 1; top: -1px;}
+    .split-box.before li::before { color: #64748b; }
+    .split-box.after li::before { color: #0284c7; }
+
+    /* FLOW CHART SECTION */
+    .flow-container { display: flex; align-items: stretch; justify-content: space-between; gap: 10px; margin-bottom: 30px; }
+    .flow-box { flex: 1; background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid #3b82f6; }
+    .flow-box h4 { font-size: 14px; font-weight: 800; color: #2563eb; margin-bottom: 10px; text-transform: uppercase; }
+    .flow-box p { font-size: 12px; color: #475569; line-height: 1.5; text-align: left;}
+    .flow-arrow { display: flex; align-items: center; font-size: 24px; color: #f59e0b; font-weight: bold; }
+
+    /* JAMINAN PRINSIP & PENTING */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+    .info-panel { background: #fff; border-radius: 12px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border-left: 5px solid #3b82f6;}
+    .info-panel h4 { font-size: 16px; font-weight: 800; color: #1e293b; margin-bottom: 10px; text-align: center;}
+    .info-panel p { font-size: 13.5px; color: #475569; line-height: 1.6; text-align: justify;}
+    
+    .panel-green { border-left-color: #16a34a; background: #f0fdf4; }
+    .panel-green h4 { color: #15803d; }
+    .panel-yellow { border-left-color: #f59e0b; background: #fffbeb; }
+    .panel-yellow h4 { color: #b45309; }
+
+    /* VISUAL PAYSLIP */
+    .payslip-container { display: flex; gap: 20px; margin-bottom: 30px; }
+    .payslip { flex: 1; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 1px solid #cbd5e1;}
+    .payslip-header { padding: 15px; text-align: center; font-weight: 800; color: #fff; font-size: 16px; letter-spacing: 1px;}
+    .payslip-before .payslip-header { background: linear-gradient(135deg, #ef4444, #b91c1c); }
+    .payslip-after .payslip-header { background: linear-gradient(135deg, #22c55e, #15803d); }
+    .payslip-body { padding: 20px; font-size: 12px; background: #fff; line-height: 1.6; }
+    .payslip-body table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px;}
+    .payslip-body th { background: #f1f5f9; padding: 8px; border: 1px solid #cbd5e1; text-align: left; color: #1e293b;}
+    .payslip-body td { padding: 8px; border: 1px solid #cbd5e1; color: #334155;}
+    .highlight-diff { background: #fef08a; font-weight: bold; }
+
+    /* DISKRESI SECTION */
+    .diskresi-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+    .diskresi-box { background: #fff; border-radius: 12px; padding: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 5px solid #8b5cf6; }
+    .diskresi-box h3 { font-size: 16px; font-weight: 800; color: #6d28d9; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;}
+    .diskresi-box ul { list-style: none; padding-left: 0; font-size: 13.5px; line-height: 1.6; }
+    .diskresi-box ul li { padding-left: 20px; position: relative; margin-bottom: 10px; color: #334155; text-align: justify;}
+    .diskresi-box ul li::before { content: '▪'; position: absolute; left: 0; color: #8b5cf6; font-weight: bold;}
+
+    /* FOOTER TEXT */
+    .footer-text { text-align: center; font-size: 16px; font-weight: 800; color: #2563eb; margin-bottom: 15px; }
+    .footer-note { font-size: 11px; color: #64748b; text-align: center; }
+
+    @media (max-width: 900px) { 
+        .split-container, .flow-container, .grid-2, .payslip-container, .diskresi-container { flex-direction: column; display: flex; } 
+        .flow-arrow { transform: rotate(90deg); justify-content: center; margin: 10px 0; }
+    }
+</style>
+</head>
+<body>
+
+    <div class="page-content">
+        <!-- HEADER TEXT -->
+        <div class="top-nav">SSI | 03</div>
+        <div class="page-title">PENYESUAIAN STRUKTUR REMUNERASI</div>
+        <div class="page-subtitle">Penataan komponen penghasilan dengan menjaga total hak dasar dan kejelasan basis manfaat</div>
+        <div class="title-line"></div>
+
+        <!-- 1. SPLIT SCREEN BEFORE AFTER -->
+        <div class="split-container">
+            <div class="split-box before">
+                <h3>SEBELUM | STRUKTUR LAMA</h3>
+                <ul>
+                    <li>Komponen upah dan tunjangan belum tersaji dengan klasifikasi yang seragam.</li>
+                    <li>Upah Pokok (UP) dan komponen tunjangan tertentu menggunakan nomenklatur/penempatan lama.</li>
+                    <li>Penerimaan di luar payroll (mis. lembur, SPPD, THR/bonus) tidak seluruhnya tergambar bersama dalam slip gaji.</li>
+                    <li>Informasi penghasilan bruto dan pajak belum terlihat utuh pada satu tampilan payslip.</li>
+                </ul>
+            </div>
+            <div class="split-box after">
+                <h3>SESUDAH | STRUKTUR BARU 2026</h3>
+                <ul>
+                    <li>Komponen upah ditata kembali: Upah Pokok dan tunjangan sesuai klasifikasi remunerasi SSI.</li>
+                    <li>Penyesuaian nomenklatur: komponen UP lama dialihkan ke Tunjangan Kepangkatan; THL menjadi Upah Pokok baru sesuai desain struktur.</li>
+                    <li>Total penghasilan/hak dasar dipertahankan; perubahan adalah penataan komponen, bukan pemotongan sepihak.</li>
+                    <li>Penerimaan lain yang merupakan objek PPh 21 ditampilkan bersama payroll agar penghasilan dan potongan lebih transparan.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- JAMINAN PRINSIP -->
+        <div class="info-panel panel-green" style="margin-bottom: 40px;">
+            <h4>JAMINAN PRINSIP</h4>
+            <p>Dasar perhitungan kompensasi PKWT serta pesangon/UPMK mengikuti komponen upah yang ditentukan peraturan dan PP/ketentuan SSI; perubahan label atau tata letak payslip tidak boleh mengurangi hak normatif.</p>
+        </div>
+
+        <!-- 2. SLIP GAJI BARU FLOW -->
+        <div class="section-header">SLIP GAJI BARU: PENERIMAAN, PAJAK & NILAI NETTO</div>
+        <div class="page-subtitle" style="text-align:center; margin-bottom: 20px;">Satu tampilan payroll untuk memperlihatkan komponen penghasilan dan transaksi terkait secara lebih transparan</div>
+        
+        <div class="flow-container">
+            <div class="flow-box">
+                <h4>PENGHASILAN UTAMA</h4>
+                <p>Upah Pokok<br>Tunjangan tetap<br>Tunjangan lain</p>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">
+                <h4>PENERIMAAN LAIN</h4>
+                <p>Lembur • SPPD rutin/pindah<br>Sewa rumah • THR/bonus<br>ROP & penerimaan lain*</p>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">
+                <h4>PERHITUNGAN PAJAK</h4>
+                <p>Komponen objek PPh 21 masuk penghasilan bruto sesuai ketentuan pajak</p>
+            </div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-box">
+                <h4>NILAI NETTO PAYROLL</h4>
+                <p>Penerimaan dan transaksi penambah/pengurang dicatat agar transfer bersih akurat</p>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="info-panel" style="border-left-color: #64748b; background: #f8fafc;">
+                <h4>BAGAIMANA TRANSAKSI DITAMPILKAN?</h4>
+                <p>Jika lembur/SPPD/penerimaan lain sudah dibayarkan atau direalisasikan di luar transfer payroll, slip gaji menampilkan nilai yang sama pada sisi penambah dan pengurang/penyesuaian sesuai desain sistem. Tujuannya agar seluruh penghasilan dan transaksi tercatat, tanpa membayar dua kali atau mengurangi nilai netto yang memang menjadi hak pegawai.</p>
+            </div>
+            <div class="info-panel panel-yellow">
+                <h4>PENTING DIPAHAMI</h4>
+                <p>PPh Pasal 21 bukan selalu "pajak final". Untuk pegawai tetap, pemotongan bulanan menggunakan tarif efektif; pada masa pajak terakhir dilakukan penghitungan kembali sesuai ketentuan tahunan.</p>
+            </div>
+        </div>
+
+        <div class="footer-text">HASIL YANG DIHARAPKAN: slip gaji lebih lengkap • pajak lebih transparan • nilai transfer netto lebih akurat</div>
+        <div class="footer-note">Dasar pajak: PMK 168/2023; ketentuan PPh Pasal 21 dan aturan pelaksanaannya. *Sepanjang merupakan objek PPh 21 menurut ketentuan.</div>
+
+        <!-- 3. VISUAL PAYSLIP -->
+        <div class="section-header" style="margin-top: 50px;">ILUSTRASI PERBANDINGAN PAYSLIP</div>
+        <div class="payslip-container">
+            <div class="payslip payslip-before">
+                <div class="payslip-header">BEFORE (STRUKTUR LAMA)</div>
+                <div class="payslip-body">
+                    <table>
+                        <tr><th>Penghasilan (Kiri)</th><th>Potongan (Kanan)</th></tr>
+                        <tr><td>Upah (Pokok, Tunjangan Hidup Layak, Diskresi)</td><td>Premi (BPJS TK, BPJS KES)</td></tr>
+                        <tr><td>Tunjangan Tetap (Jabatan)</td><td>Iuran (Koperasi, DPLK, dll)</td></tr>
+                        <tr><td>Tunjangan Tidak Tetap (Transportasi, BPJS)</td><td>Potongan Pegawai (CUG, SPPD, Lainnya)</td></tr>
+                        <tr><td><b>Total Penghasilan - Bruto</b></td><td><b>Total Potongan</b></td></tr>
+                    </table>
+                    <p style="margin-top:10px; font-size:10px; color:#dc2626; font-style:italic;">*Penghasilan lain di luar gaji tidak terlihat menyatu dalam perhitungan pajak.</p>
+                </div>
+            </div>
+
+            <div class="payslip payslip-after">
+                <div class="payslip-header">AFTER (STRUKTUR BARU 2026)</div>
+                <div class="payslip-body">
+                    <table>
+                        <tr><th>Penerimaan</th><th>Potongan</th></tr>
+                        <tr><td><b>Basic Salary:</b> Upah Pokok, Diskresi/UMK</td><td>SPPD, CUG, ROP, Operasional ROP</td></tr>
+                        <tr><td><b>Tunjangan:</b> Kepangkatan, Jabatan, Diskresi-Jabatan</td><td>Koperasi, DPLK, dll</td></tr>
+                        <tr><td><b>Tj. Tidak Tetap = Bantuan Transportasi</b></td><td>Premi (BPJS TK, BPJS KES)</td></tr>
+                        <tr class="highlight-diff"><td><b>Penerimaan Lainnya:</b> SPPD, ROP, dll (Tampil Bersamaan)</td><td><b>PPh 21 Final</b> (Tercermin dari total gaji)</td></tr>
+                    </table>
+                    <p style="margin-top:10px; font-size:10px; color:#16a34a; font-style:italic;">*Terdapat info "Terbilang" dan info rekening transfer di bagian bawah.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-panel panel-green" style="margin-bottom: 40px;">
+            <h4>⚖️ FITUR DEBET/KREDIT (TRANSPARANSI NETT)</h4>
+            <!-- KOREKSI TEKS DI BAWAH INI -->
+            <p>Saat pegawai menerima SPPD/Lembur dan penerimaan lainnya yang menjadi objek pajak, nilai rupiah akan tampil sebagai faktor penambah/pengurang. Sehingga nilai Nett yang masuk ke rekening adalah angka riil yang diterima (sesuai kondisi sebenarnya).</p>
+        </div>
+
+        <!-- 4. DISKRESI SECTION -->
+        <div class="section-header">MEKANISME DISKRESI: JAMINAN PENDAPATAN SAAT MUTASI</div>
+        <div class="page-subtitle" style="text-align:center; margin-bottom: 20px;">Konsep Dasar: Menjaga selisih pendapatan agar pegawai tidak mengalami penurunan saat mutasi/promosi.</div>
+
+        <div class="diskresi-container">
+            <div class="diskresi-box">
+                <h3>📍 DISKRESI UMP</h3>
+                <ul>
+                    <li>Berlaku untuk mutasi dari <b>Lokasi UMP Tinggi</b> ke <b>Lokasi UMP Rendah</b>.</li>
+                    <li><b>Formula:</b> Nilai = Selisih antara UMP Asal dengan UMP Mutasi Tujuan.</li>
+                    <li>Mencegah penurunan pendapatan dasar secara drastis.</li>
+                </ul>
+            </div>
+
+            <div class="diskresi-box">
+                <h3>💼 DISKRESI TUNJANGAN JABATAN</h3>
+                <ul>
+                    <li>Berlaku untuk promosi/mutasi yang mengakibatkan <b>Klasifikasi COU lebih rendah</b>.</li>
+                    <li><b>Formula:</b> Nilai = Selisih antara Tunjangan Jabatan Lama dengan Tunjangan Jabatan Baru di lokasi baru.</li>
+                    <li>Memastikan hak struktural tetap terjaga.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="info-panel panel-yellow" style="text-align: center; margin-bottom: 0;">
+            <h4>📌 CATATAN PENTING</h4>
+            <p style="font-weight: 600; font-size: 15px;">Nilai selisih ini akan muncul di kolom <b>Diskresi</b> pada slip gaji baru sebagai bentuk jaminan kesejahteraan pegawai.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
