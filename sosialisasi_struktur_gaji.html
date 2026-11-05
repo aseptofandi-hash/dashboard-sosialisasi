@@ -148,11 +148,11 @@
         <div class="grid-2">
             <div class="info-panel" style="border-left-color: #64748b; background: #f8fafc;">
                 <h4>BAGAIMANA TRANSAKSI DITAMPILKAN?</h4>
-                <p>Jika lembur/SPPD/penerimaan lain sudah dibayarkan atau direalisasikan di luar transfer payroll, slip gaji menampilkan nilai yang sama pada sisi penambah dan pengurang/penyesuaian sesuai desain sistem. Tujuannya agar seluruh penghasilan dan transaksi tercatat, tanpa membayar dua kali atau mengurangi nilai netto yang memang menjadi hak pegawai.</p>
+                <p>Jika lembur/SPPD/penerimaan lain sudah dibayarkan atau direalisasikan di luar transfer payroll, slip gaji menampilkan nilai yang sama pada sisi penambah dan pengurang/penyesuaian sesuai desain sistem. Tujuannya agar seluruh penghasilan dan transaksi tercatat, tanpa membayar dua kali atau mengurangi nilai netto yang memang menjadi hak karyawan.</p>
             </div>
             <div class="info-panel panel-yellow">
                 <h4>PENTING DIPAHAMI</h4>
-                <p>PPh Pasal 21 bukan selalu "pajak final". Untuk pegawai tetap, pemotongan bulanan menggunakan tarif efektif; pada masa pajak terakhir dilakukan penghitungan kembali sesuai ketentuan tahunan.</p>
+                <p>PPh Pasal 21 bukan selalu "pajak final". Untuk karyawan tetap, pemotongan bulanan menggunakan tarif efektif; pada masa pajak terakhir dilakukan penghitungan kembali sesuai ketentuan tahunan.</p>
             </div>
         </div>
 
@@ -169,7 +169,7 @@
                         <tr><th>Penghasilan (Kiri)</th><th>Potongan (Kanan)</th></tr>
                         <tr><td>Upah (Pokok, Tunjangan Hidup Layak, Diskresi)</td><td>Premi (BPJS TK, BPJS KES)</td></tr>
                         <tr><td>Tunjangan Tetap (Jabatan)</td><td>Iuran (Koperasi, DPLK, dll)</td></tr>
-                        <tr><td>Tunjangan Tidak Tetap (Transportasi, BPJS)</td><td>Potongan Pegawai (CUG, SPPD, Lainnya)</td></tr>
+                        <tr><td>Tunjangan Tidak Tetap (Transportasi, BPJS)</td><td>Potongan Karyawan (CUG, SPPD, Lainnya)</td></tr>
                         <tr><td><b>Total Penghasilan - Bruto</b></td><td><b>Total Potongan</b></td></tr>
                     </table>
                     <p style="margin-top:10px; font-size:10px; color:#dc2626; font-style:italic;">*Penghasilan lain di luar gaji tidak terlihat menyatu dalam perhitungan pajak.</p>
@@ -182,24 +182,27 @@
                     <table>
                         <tr><th>Penerimaan</th><th>Potongan</th></tr>
                         <tr><td><b>Basic Salary:</b> Upah Pokok, Diskresi/UMK</td><td>SPPD, CUG, ROP, Operasional ROP</td></tr>
+                        
+                        <!-- REVISI: BANTUAN BPJS DIPISAHKAN DARI TUNJANGAN -->
                         <tr><td><b>Tunjangan:</b> Kepangkatan, Jabatan, Diskresi-Jabatan</td><td>Koperasi, DPLK, dll</td></tr>
+                        <tr><td><b>Bantuan BPJS (TK/Kes)</b></td><td>-</td></tr>
+                        
                         <tr><td><b>Tj. Tidak Tetap = Bantuan Transportasi</b></td><td>Premi (BPJS TK, BPJS KES)</td></tr>
                         <tr class="highlight-diff"><td><b>Penerimaan Lainnya:</b> SPPD, ROP, dll (Tampil Bersamaan)</td><td><b>PPh 21 Final</b> (Tercermin dari total gaji)</td></tr>
                     </table>
-                    <p style="margin-top:10px; font-size:10px; color:#16a34a; font-style:italic;">*Terdapat info "Terbilang" dan info rekening transfer di bagian bawah.</p>
+                    <p style="margin-top:10px; font-size:10px; color:#16a34a; font-style:italic;">*Penghasilan lain di luar gaji terlihat menyatu dalam perhitungan pajak.</p>
                 </div>
             </div>
         </div>
 
         <div class="info-panel panel-green" style="margin-bottom: 40px;">
             <h4>⚖️ FITUR DEBET/KREDIT (TRANSPARANSI NETT)</h4>
-            <!-- KOREKSI TEKS DI BAWAH INI -->
-            <p>Saat pegawai menerima SPPD/Lembur dan penerimaan lainnya yang menjadi objek pajak, nilai rupiah akan tampil sebagai faktor penambah/pengurang. Sehingga nilai Nett yang masuk ke rekening adalah angka riil yang diterima (sesuai kondisi sebenarnya).</p>
+            <p>Saat karyawan menerima SPPD/Lembur dan penerimaan lainnya yang menjadi objek pajak, nilai rupiah akan tampil sebagai faktor penambah/pengurang. Sehingga nilai Nett yang masuk ke rekening adalah angka riil yang diterima (sesuai kondisi sebenarnya).</p>
         </div>
 
         <!-- 4. DISKRESI SECTION -->
         <div class="section-header">MEKANISME DISKRESI: JAMINAN PENDAPATAN SAAT MUTASI</div>
-        <div class="page-subtitle" style="text-align:center; margin-bottom: 20px;">Konsep Dasar: Menjaga selisih pendapatan agar pegawai tidak mengalami penurunan saat mutasi/promosi.</div>
+        <div class="page-subtitle" style="text-align:center; margin-bottom: 20px;">Konsep Dasar: Menjaga selisih pendapatan agar karyawan tidak mengalami penurunan saat mutasi/promosi.</div>
 
         <div class="diskresi-container">
             <div class="diskresi-box">
@@ -223,7 +226,7 @@
         
         <div class="info-panel panel-yellow" style="text-align: center; margin-bottom: 0;">
             <h4>📌 CATATAN PENTING</h4>
-            <p style="font-weight: 600; font-size: 15px;">Nilai selisih ini akan muncul di kolom <b>Diskresi</b> pada slip gaji baru sebagai bentuk jaminan kesejahteraan pegawai.</p>
+            <p style="font-weight: 600; font-size: 15px;">Nilai selisih ini akan muncul di kolom <b>Diskresi</b> pada slip gaji baru sebagai bentuk jaminan kesejahteraan karyawan.</p>
         </div>
 
     </div>
